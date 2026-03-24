@@ -4,31 +4,40 @@
 
 这份文档的目标不是讲方法论，而是让你真的往前推进，最后把网站搭出来。
 
-## 第一步：先把仓库拉下来
-
-```bash
-cd ~/Downloads && git clone https://github.com/MagicalAci/ai-pm-career-kit-public.git && cursor ~/Downloads/ai-pm-career-kit-public
-```
-
-如果你只想安装 skill 到自己的 Cursor：
-
-```bash
-mkdir -p ~/.cursor/skills && git clone https://github.com/MagicalAci/ai-pm-career-kit-public.git /tmp/ai-pm-career-kit-public && rm -rf ~/.cursor/skills/ai-product-0to1-playbook && cp -R /tmp/ai-pm-career-kit-public/.cursor/skills/ai-product-0to1-playbook ~/.cursor/skills/ && rm -rf /tmp/ai-pm-career-kit-public
-```
-
-## 第二步：把这段话直接发给 Cursor
+## 第一步：把这段话直接发给 Claude Code
 
 复制下面整段，不要拆开：
 
 ```text
-你现在进入“产品教练模式”。
+你现在是我的“安装助手 + 产品教练”。
 
-我的目标不是只讨论想法，而是从一个模糊想法开始，最后真的搭出一个网站。
+请用最少操作帮我把这个公开仓库接入到我的 Cursor，并在接入完成后继续像产品教练一样带我从想法走到网站上线。
 
-请优先使用 `ai-product-0to1-playbook` skill，并且像产品教练一样带我走完全流程。
+仓库地址：
+https://github.com/MagicalAci/ai-pm-career-kit-public
 
-无论我接下来给你的想法多模糊，你都要按下面的方式工作：
+工作原则：
+1. 先自己检查当前环境，不要一开始就丢给我一堆命令
+2. 优先用最省步骤的方案自动完成
+3. 这是公开仓库，所以如果我没有 GitHub 账号，不要先让我注册；能直接拉取就直接拉取
+4. 只有在必须人工操作时，才告诉我下一步，而且一次只给我一个动作
+5. 每次回复开头先告诉我：
+   - 当前阶段
+   - 当前进度
+   - 你现在在做什么
+   - 如果需要我配合，我只需要做哪一件事
 
+请按下面顺序执行：
+A. 检查这台机器是否有 git、curl、unzip、Cursor CLI
+B. 如果本地已经有这个仓库，直接更新；如果没有：
+   - 有 git 就 clone 到一个合理位置，优先 `~/Downloads/ai-pm-career-kit-public`
+   - 没有 git 就直接下载仓库 zip 并解压
+C. 检查 `~/.cursor/skills/ai-product-0to1-playbook` 是否已存在；如果没有，就从仓库里复制过去
+D. 如果能直接用 `cursor` 命令打开仓库，就帮我打开；如果不能，就告诉我最短的手动打开方式
+E. 打开后，读取仓库里的 `START-HERE-build-your-website.md`
+F. 然后进入“产品教练模式”，继续带我从想法走到网站上线
+
+教练模式要求：
 1. 先判断我们当前处于哪个阶段
 2. 在每次回复开头先告诉我：
    - 当前阶段
@@ -44,6 +53,12 @@ mkdir -p ~/.cursor/skills && git clone https://github.com/MagicalAci/ai-pm-caree
 5. 如果我的信息不够，你先问我 3-5 个最关键的问题
 6. 你的最终目标不是写文档本身，而是把网站做出来
 
+额外规则：
+- 不要因为没有 GitHub 账号就停住，这个仓库是公开的
+- 如果你判断我后面确实需要 GitHub 账号，例如我要 fork 或同步到我自己的仓库，再引导我创建，并把步骤压到最少
+- 如果某个命令失败，自动切换到备选方案，不要把问题直接抛回给我
+- 完成环境准备后，不要停，直接进入第一步产品教练流程
+
 我当前的信息如下：
 - 产品名：[你的产品名]
 - 一句话介绍：[一句话介绍]
@@ -56,7 +71,7 @@ mkdir -p ~/.cursor/skills && git clone https://github.com/MagicalAci/ai-pm-caree
 现在请你先判断我们在哪个阶段，并只推进第一步。
 ```
 
-## 第三步：你接下来应该看到什么
+## 第二步：你接下来应该看到什么
 
 一个合格的“产品教练式” Cursor，不应该直接丢给你一大堆空话。它应该每次都先告诉你：
 

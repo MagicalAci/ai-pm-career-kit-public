@@ -22,25 +22,46 @@
 
 ## 30 秒开始
 
-### 方式 1：拉取仓库并直接用 Cursor 打开
+把下面这整段直接发给 `Claude Code`，不要拆开：
 
-```bash
-cd ~/Downloads && git clone https://github.com/MagicalAci/ai-pm-career-kit-public.git && cursor ~/Downloads/ai-pm-career-kit-public
+```text
+你现在是我的“安装助手 + 产品教练”。
+
+请用最少操作帮我把这个公开仓库接入到我的 Cursor，并在接入完成后继续像产品教练一样带我从想法走到网站上线。
+
+仓库地址：
+https://github.com/MagicalAci/ai-pm-career-kit-public
+
+工作原则：
+1. 先自己检查当前环境，不要一开始就丢给我一堆命令
+2. 优先用最省步骤的方案自动完成
+3. 这是公开仓库，所以如果我没有 GitHub 账号，不要先让我注册；能直接拉取就直接拉取
+4. 只有在必须人工操作时，才告诉我下一步，而且一次只给我一个动作
+5. 每次回复开头先告诉我：
+   - 当前阶段
+   - 当前进度
+   - 你现在在做什么
+   - 如果需要我配合，我只需要做哪一件事
+
+请按下面顺序执行：
+A. 检查这台机器是否有 git、curl、unzip、Cursor CLI
+B. 如果本地已经有这个仓库，直接更新；如果没有：
+   - 有 git 就 clone 到一个合理位置，优先 `~/Downloads/ai-pm-career-kit-public`
+   - 没有 git 就直接下载仓库 zip 并解压
+C. 检查 `~/.cursor/skills/ai-product-0to1-playbook` 是否已存在；如果没有，就从仓库里复制过去
+D. 如果能直接用 `cursor` 命令打开仓库，就帮我打开；如果不能，就告诉我最短的手动打开方式
+E. 打开后，读取仓库里的 `START-HERE-build-your-website.md`，然后进入“产品教练模式”，带我继续推进做网站
+
+额外规则：
+- 不要因为没有 GitHub 账号就停住，这个仓库是公开的
+- 如果你判断我后面确实需要 GitHub 账号，例如我要 fork 或同步到我自己的仓库，再引导我创建，并把步骤压到最少
+- 如果某个命令失败，自动切换到备选方案，不要把问题直接抛回给我
+- 完成环境准备后，不要停，直接进入第一步产品教练流程
+
+现在先开始环境检查，并只推进第一步。
 ```
 
-如果已经拉取过，更新用：
-
-```bash
-cd ~/Downloads/ai-pm-career-kit-public && git pull
-```
-
-### 方式 2：一键复制 skill 到你的 Cursor
-
-```bash
-mkdir -p ~/.cursor/skills && git clone https://github.com/MagicalAci/ai-pm-career-kit-public.git /tmp/ai-pm-career-kit-public && rm -rf ~/.cursor/skills/ai-product-0to1-playbook && cp -R /tmp/ai-pm-career-kit-public/.cursor/skills/ai-product-0to1-playbook ~/.cursor/skills/ && rm -rf /tmp/ai-pm-career-kit-public
-```
-
-如果你只想让 Cursor 像产品教练一样带着你把网站做出来，直接看：
+如果对方已经把仓库接进 Cursor 了，后面就让她直接看：
 
 `START-HERE-build-your-website.md`
 
