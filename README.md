@@ -20,6 +20,30 @@
 - 不包含私有项目资料、私有链接、内部文档
 - 不包含个人手机号、邮箱等隐私信息
 
+## 30 秒开始
+
+### 方式 1：拉取仓库并直接用 Cursor 打开
+
+```bash
+cd ~/Downloads && git clone https://github.com/MagicalAci/ai-pm-career-kit-public.git && cursor ~/Downloads/ai-pm-career-kit-public
+```
+
+如果已经拉取过，更新用：
+
+```bash
+cd ~/Downloads/ai-pm-career-kit-public && git pull
+```
+
+### 方式 2：一键复制 skill 到你的 Cursor
+
+```bash
+mkdir -p ~/.cursor/skills && git clone https://github.com/MagicalAci/ai-pm-career-kit-public.git /tmp/ai-pm-career-kit-public && rm -rf ~/.cursor/skills/ai-product-0to1-playbook && cp -R /tmp/ai-pm-career-kit-public/.cursor/skills/ai-product-0to1-playbook ~/.cursor/skills/ && rm -rf /tmp/ai-pm-career-kit-public
+```
+
+如果你只想让 Cursor 像产品教练一样带着你把网站做出来，直接看：
+
+`START-HERE-build-your-website.md`
+
 ## 如何使用
 
 ### 1. 简历
@@ -41,11 +65,25 @@
 1. 直接在 Cursor 里打开这个仓库，当作项目 skill 使用
 2. 把 `ai-product-0to1-playbook` 目录复制到 `~/.cursor/skills/`，当作个人 skill 使用
 
+### 4. 教练式网站搭建
+
+如果你的目标不是“学习方法论”，而是“真的把一个网站搭出来”，请从这里开始：
+
+`START-HERE-build-your-website.md`
+
+它会告诉你：
+
+- 第一步该给 Cursor 发送什么启动指令
+- Cursor 每一轮应该怎么告诉你当前进度
+- 每个阶段你需要做什么、给什么信息、拿回什么结果
+- 怎么从一个模糊想法走到一个真的上线网站
+
 ## 建议的使用顺序
 
 1. 先改简历模板
 2. 再改面试总稿模板
-3. 最后用 skill 去推进自己的项目材料、产品案例或 0-1 产品方案
+3. 如果目标是做网站，直接进入 `START-HERE-build-your-website.md`
+4. 最后用 skill 去推进自己的项目材料、产品案例或 0-1 产品方案
 
 ## 说明
 

@@ -1,6 +1,6 @@
 ---
 name: ai-product-0to1-playbook
-description: Guide the agent through taking an AI product from 0 to 1: user segmentation, strategy, validation experiments, competitor analysis, PRD, user stories, prototyping, prompt/system design, testing, metrics, and GTM. Use when the user wants to build, validate, design, or launch an AI product from scratch, asks for an end-to-end AI product workflow, or wants to use AI tools across product stages.
+description: Guide the agent through taking an AI product from 0 to 1 with a coach-style workflow: user segmentation, strategy, validation experiments, competitor analysis, PRD, user stories, prototyping, prompt/system design, testing, metrics, GTM, and website launch planning. Use when the user wants to build, validate, design, or launch an AI product from scratch, asks for an end-to-end AI product workflow, wants Cursor to act like a product coach, or wants to turn an idea into a website.
 ---
 
 # AI product 0-to-1 playbook
@@ -19,10 +19,26 @@ When this skill applies:
 2. If the user wants end-to-end help, move through the 11 phases below in order.
 3. If the user only asks for one phase, skip directly to that phase.
 4. After each phase, always output:
+   - current progress
    - key conclusion
    - structured markdown deliverable
    - assumptions vs validated facts
    - what is needed for the next phase
+
+## Coach mode
+
+When the user wants guidance rather than a one-off answer, behave like a product coach:
+
+1. Do not dump the whole framework at once.
+2. Identify the current phase first.
+3. Give one clear next step at a time.
+4. Ask only the minimum questions needed to move forward.
+5. At the start of every substantial reply, show:
+   - current phase
+   - progress so far
+   - what the user needs to do now
+   - what you will produce after that
+6. If the user's goal is to build a website, steer the workflow toward a ship-ready site rather than a generic product strategy deck.
 
 ## Core rules
 
@@ -48,6 +64,10 @@ When this skill applies:
 | 9. Test scenarios | Make quality reviewable | test cases, edge cases, smoke tests |
 | 10. Metrics | Make iteration measurable | NSM, input metrics, health metrics |
 | 11. GTM | Launch to real users | channel plan, messaging, 90-day plan |
+| 12. Website scope | Decide what the first site includes | sitemap, page list, must-have sections |
+| 13. Website copy | Turn product thinking into page content | headline, value prop, section copy, CTA |
+| 14. Website build plan | Turn pages into implementation work | stack, pages, components, build steps |
+| 15. Website launch QA | Ship without obvious gaps | launch checklist, QA, analytics, deploy steps |
 
 ## Phase instructions
 
@@ -196,12 +216,66 @@ Output:
 - 90-day GTM plan
 - risks and success signals
 
+### 12. Website scope
+
+Goal: define the smallest useful website that should exist first.
+
+Output:
+
+- site goal
+- target audience for the site
+- sitemap
+- page list
+- must-have sections per page
+- what is explicitly not in v1
+
+### 13. Website copy
+
+Goal: turn product strategy into website words people can understand.
+
+Output:
+
+- homepage headline and subheadline
+- section-by-section copy
+- CTA text
+- FAQ suggestions
+- proof or trust-building blocks needed
+
+### 14. Website build plan
+
+Goal: make the site buildable by an engineer or AI coding workflow.
+
+Output:
+
+- recommended stack
+- page inventory
+- shared components
+- implementation order
+- what can be hardcoded first vs dynamic later
+
+### 15. Website launch QA
+
+Goal: launch a usable site instead of an unfinished draft.
+
+Output:
+
+- QA checklist
+- mobile and desktop checks
+- analytics and conversion events
+- SEO basics
+- deployment checklist
+
 ## Output template
 
 Use this structure unless the user asks for a different format:
 
 ```markdown
 # [Phase Title]
+
+## Current progress
+- Current phase: [x/15]
+- Completed: [completed phases]
+- Now working on: [current task]
 
 ## Key conclusion
 [Short answer first]
@@ -217,6 +291,9 @@ Use this structure unless the user asks for a different format:
 
 ## Next input needed
 - [Missing input 1]
+
+## Next action
+- [One clear thing the user should do next]
 ```
 
 ## Trigger questions to ask when context is missing
@@ -228,6 +305,7 @@ Ask up to 5 focused questions, such as:
 - What is the non-AI baseline today?
 - What constraints matter most right now: time, budget, data, compliance, or team size?
 - What stage is the product in: idea, validation, prototype, beta, or launch?
+- Is your immediate goal to validate the product, or to get a real website live as soon as possible?
 
 ## Example use cases
 
@@ -235,3 +313,4 @@ Ask up to 5 focused questions, such as:
 - "I have an AI product idea. Help me validate it before building."
 - "Turn my AI product idea into strategy, PRD, user stories, and GTM."
 - "Use AI tools to structure my whole product workflow from user research to launch."
+- "Act like a product coach and guide me step by step until I ship a website."
